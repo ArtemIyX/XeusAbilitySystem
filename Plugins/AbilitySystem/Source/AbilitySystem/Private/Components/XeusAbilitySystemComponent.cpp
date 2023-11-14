@@ -112,6 +112,11 @@ bool UXeusAbilitySystemComponent::RemoveEffect(TSubclassOf<UXeusEffect> InClass)
 	if (!Effect)
 		return false;
 
+	for (int32 i = 0; i < Effects.Num(); ++i)
+		if (Effects[i] != Effect)
+			Effects[i]->EffectRemoving(Effect);
+
+
 	const int32 index = Effects.Find(Effect);
 	Effects[index]->ConditionalBeginDestroy();
 	Effects[index] = nullptr;
@@ -151,7 +156,18 @@ bool UXeusAbilitySystemComponent::StopEffect(TSubclassOf<UXeusEffect> InClass)
 	UXeusEffect* Effect = GetEffectByClass(InClass);
 	if (!Effect)
 		return false;
-	Effect->NotifyEndWork();
+	return StopEffectInstance(Effect);
+}
+
+bool UXeusAbilitySystemComponent::StopEffectInstance(UXeusEffect* InEffectInstance)
+{
+	if (!InEffectInstance)
+		return false;
+
+	if (!Effects.Contains(InEffectInstance))
+		return false;
+
+	InEffectInstance->NotifyEndWork();
 	return true;
 }
 
@@ -163,7 +179,7 @@ void UXeusAbilitySystemComponent::StopAllEffectsByClass(TSubclassOf<UXeusEffect>
 	});
 	for (int32 i = 0; i < res.Num(); ++i)
 	{
-		res[i]->NotifyEndWork();
+		StopEffectInstance(res[i]);
 	}
 }
 
@@ -173,7 +189,7 @@ void UXeusAbilitySystemComponent::StopAllEffects()
 	{
 		if (IsValid(Effects[i]))
 		{
-			Effects[i]->NotifyEndWork();
+			StopEffectInstance(Effects[i]);
 		}
 	}
 }
