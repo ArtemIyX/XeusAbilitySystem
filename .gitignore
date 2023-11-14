@@ -15,7 +15,7 @@
 *.so
 *.dylib
 *.dll
-
+dsd
 # Fortran module files
 *.mod
 
@@ -40,6 +40,7 @@
 *.sdf
 *.VC.db
 *.VC.opendb
+.idea/
 
 # Precompiled Assets
 SourceArt/**/*.png
@@ -72,3 +73,12 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Editor content
+Content/StarterContent/*
+Content/ThirdPerson/*
+Content/Mannequin/*
+Client.bat
+Server.bat
+Plugins/Developer/RiderLink/Binaries/
+Plugins/Developer/RiderLink/Intermediate/
