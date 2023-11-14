@@ -66,7 +66,7 @@ void UXeusAbilitySystemComponent::Effect_NeedRemove(UXeusEffect* Effect)
 	for (int32 i = 0; i < Effects.Num(); ++i)
 		if (Effects[i] && Effects[i] != Effect)
 			Effects[i]->EffectRemoving(Effect);
-	
+
 	OnEffectEndWork.Broadcast(this, Effect);
 	RemoveEffect(Effect->GetClass());
 }
@@ -104,7 +104,6 @@ void UXeusAbilitySystemComponent::PushEffect(UXeusEffect* InEffect)
 
 	OnEffectStartedWork.Broadcast(this, InEffect);
 	InEffect->NotifyBeginWork(this);
-	
 }
 
 bool UXeusAbilitySystemComponent::RemoveEffect(TSubclassOf<UXeusEffect> InClass)
@@ -123,10 +122,10 @@ bool UXeusAbilitySystemComponent::RemoveEffect(TSubclassOf<UXeusEffect> InClass)
 
 UXeusEffect* UXeusAbilitySystemComponent::AddEffectImpl(TSubclassOf<UXeusEffect> InClass)
 {
-	if (auto eff = StackEffect(InClass))
+	if (UXeusEffect* eff = StackEffect(InClass))
 		return eff;
 
-	UXeusEffect* Result = UXeusEffect::CreateEffect(InClass, this, GetOwner());
+	UXeusEffect* Result = UXeusEffect::CreateEffect(InClass, GetOwner());
 	PushEffect(Result);
 
 	return Result;
@@ -137,10 +136,10 @@ UXeusEffect* UXeusAbilitySystemComponent::AddEffectWithSettingsImpl(TSubclassOf<
 {
 	check(Settings);
 
-	if (auto eff = StackEffect(InClass))
+	if (UXeusEffect* eff = StackEffect(InClass))
 		return eff;
 
-	UXeusEffect* Result = UXeusEffect::CreateEffect(InClass, this, GetOwner());
+	UXeusEffect* Result = UXeusEffect::CreateEffect(InClass, GetOwner());
 	Result->Setup(Settings);
 	PushEffect(Result);
 

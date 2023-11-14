@@ -5,6 +5,8 @@
 class UXeusEffect;
 class UXeusAttribute;
 
+// Deprecated
+// Used for dynamic initialization of any effect
 USTRUCT()
 struct FXeusEffectSettings
 {
@@ -13,6 +15,8 @@ public:
 	
 };
 
+// Deprecated
+// Used for dynamic effect modifiers
 USTRUCT(BlueprintType)
 struct FXeusEffectModifier
 {
@@ -28,6 +32,8 @@ public:
 	float Value;
 };
 
+// Compact data about attribute
+// Can be used in widgets
 USTRUCT(BlueprintType)
 struct FAttributeData
 {
@@ -42,6 +48,8 @@ struct FAttributeData
 	float MaxValue;
 };
 
+// Compact data about effect
+// Can be used in widgets
 USTRUCT(BlueprintType)
 struct FEffectData
 {
@@ -53,6 +61,8 @@ public:
 	FString DisplayName;
 };
 
+// Service enum for the function of changing the attribute value
+// It's better not to use 'Set'
 UENUM(BlueprintType)
 enum class EAttributeModifyType : uint8
 {
@@ -61,6 +71,8 @@ enum class EAttributeModifyType : uint8
 	Remove
 };
 
+// Deprecated
+// Used for attributes multipliers
 UENUM(BlueprintType)
 enum class EAttributeMultiplierType : uint8
 {
@@ -71,6 +83,9 @@ enum class EAttributeMultiplierType : uint8
 	MaxValue
 };
 
+// Deprecated
+// Dynamic attribute multiplier
+// (Can change behaviour of some function (add, remove, get)
 USTRUCT(BlueprintType)
 struct FAttributeMultiplier
 {

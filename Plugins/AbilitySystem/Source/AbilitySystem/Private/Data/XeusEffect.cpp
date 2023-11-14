@@ -21,7 +21,7 @@ UXeusEffect::UXeusEffect(const FObjectInitializer& ObjectInitializer)
 	bDisplayable = false;
 }
 
-UXeusEffect* UXeusEffect::CreateEffect(TSubclassOf<UXeusEffect> InClass, UObject* Outer, AActor* Owner)
+UXeusEffect* UXeusEffect::CreateEffect(TSubclassOf<UXeusEffect> InClass, UObject* Outer)
 {
 	UXeusEffect* Effect = NewObject<UXeusEffect>(Outer, InClass);
 	//Effect->SetOwner(Owner);
@@ -39,8 +39,6 @@ void UXeusEffect::Work_Implementation()
 }
 
 void UXeusEffect::Setup(FXeusEffectSettings* Settings) { }
-
-void UXeusEffect::OnRep_Modifiers() { }
 
 bool UXeusEffect::GetIsStackable() const
 {
@@ -61,9 +59,15 @@ void UXeusEffect::NotifyEndWork()
 	EndWork();
 }
 
-void UXeusEffect::EffectAdded(UXeusEffect* InEffect) { }
+void UXeusEffect::EffectAdded_Implementation(UXeusEffect* InEffect)
+{
+	
+}
 
-void UXeusEffect::EffectRemoving(UXeusEffect* InEffect) { }
+void UXeusEffect::EffectRemoving_Implementation(UXeusEffect* InEffect)
+{
+	
+}
 
 FString UXeusEffect::GetDebugName() const
 {
