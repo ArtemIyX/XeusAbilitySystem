@@ -213,6 +213,12 @@ float UXeusAttribute::GetMaxValue() const
 	const float mult = GetMultValue(EAttributeMultiplierType::MaxValue);
 	return MaxValue * mult;
 }
+float UXeusAttribute::GetMinValue() const
+{
+	const float mult = GetMultValue(EAttributeMultiplierType::MinValue);
+	return MinValue * mult;
+}
+
 
 float UXeusAttribute::GetPercent() const
 {

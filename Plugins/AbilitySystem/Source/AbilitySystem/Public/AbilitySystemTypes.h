@@ -80,7 +80,8 @@ enum class EAttributeMultiplierType : uint8
 	Add,
 	Remove,
 	Get,
-	MaxValue
+	MaxValue,
+	MinValue
 };
 
 // Deprecated

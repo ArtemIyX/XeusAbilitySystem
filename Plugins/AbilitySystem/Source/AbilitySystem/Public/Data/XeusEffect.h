@@ -28,7 +28,7 @@ public:
 	 * @brief Creates effects of class
 	 * @param InClass Class effect
 	 * @param Outer Effect owner (character, gun etc..)
-	 * @return New effect
+	 * @return New effect instance
 	 */
 	UFUNCTION(BlueprintCallable)
 	static UXeusEffect* CreateEffect(TSubclassOf<UXeusEffect> InClass, UObject* Outer);
