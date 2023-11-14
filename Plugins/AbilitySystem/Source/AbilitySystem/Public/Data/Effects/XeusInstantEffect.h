@@ -8,7 +8,9 @@
 #include "XeusInstantEffect.generated.h"
 
 /**
- * 
+ * A permanent effect that only does the job once.
+ * Used for checks (Is player is busy or is chest is opened)
+ * You need to delete it yourself
  */
 UCLASS(Abstract, BlueprintType, Blueprintable, ClassGroup=(XeusAbilitySystem))
 class ABILITYSYSTEM_API UXeusInstantEffect : public UXeusEffect

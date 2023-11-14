@@ -45,10 +45,11 @@ void UXeusProgressEffect::UnPauseTimer()
 	}
 }
 
-void UXeusProgressEffect::TimerWork()
+void UXeusProgressEffect::TimerWork_Implementation()
 {
 	SetCurrentProgress(GetCurrentProgress() + GetProgressRate());
 }
+
 
 void UXeusProgressEffect::Work_Implementation()
 {
@@ -124,4 +125,9 @@ float UXeusProgressEffect::GetProgressAmount() const
 bool UXeusProgressEffect::GetIsInProgress() const
 {
 	return bInProgress;
+}
+
+float UXeusProgressEffect::GetPercent() const
+{
+	return CurrentProgress / NeedProgress;
 }
