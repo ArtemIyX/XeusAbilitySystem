@@ -2,6 +2,8 @@
 
 #include "AbilitySystem.h"
 
+DEFINE_LOG_CATEGORY(AbilitySystemLog);
+
 #define LOCTEXT_NAMESPACE "FAbilitySystemModule"
 
 void FAbilitySystemModule::StartupModule()
